@@ -1,4 +1,4 @@
-
+from lxml import html, parse
 import scrapy
 
 class QueryTool():
@@ -14,14 +14,23 @@ class QueryTool():
     def Searcher(urlStart, searchTermList): 
         urlList = []
         for searchTerm in self.searchTermList:
+
             #initializes url
             urlToVisit = urlStart + searchTerm
 
             #gos to the url
-            
-            #finds the page with the highest int value following the search term
+            page = requests.get('urlToVisit')
+            tree = html.fromstring(page.content)
 
-            #returns list of urls with proper QFC ideas to locate the threads
+            #xml parser finds the page with the highest int value following the search term
+            data = tree.xpath('')   #whatever we are looking through
+                                    #now we gotta stick the proper div into a list of lists
+                                    #Column 0 contains the title text, column 1 contains the QFC id
+        
+
+            #returns list of urls with proper QFC ids to locate the threads
+                                    #append proper url to urlList
+            return urlList
             
  
 urlStart = "http://services.runescape.com/m=forum/searchthreads.ws?search=submit&srcstr="
