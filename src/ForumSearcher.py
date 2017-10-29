@@ -1,24 +1,7 @@
 from lxml import html, parse
 import scrapy
 
-
-'''
-    Finds the URLs of the threads to be parsed
-'''
 class QueryTool():
-    '''
-        String containing the first half of the URL used to search
-    '''
-    urlStart = "http://services.runescape.com/m=forum/searchthreads.ws?search=submit&srcstr="
-
-    '''
-        String containing the search terms in URL format
-    '''
-    searchTermList = ["~Discontinued%20Item%20Status", "High%20Level%20Weapon%20Status",
-                    "Ability%20Codex%20Status%20Thread", "Treasure%20Trails%20Item%20Status",
-                    "SOF/TH%20Item%20Status", "~Third-Age%20Status",
-                    "High%20Level%20Gear%20Status", "Nex%20Status"]
-
     '''
         Concatonates earch term to the url and runs a search of the terms in
         the list that are passed to it. Returns urls of the correct threads.
@@ -50,5 +33,9 @@ class QueryTool():
             return urlList
             
  
-
-QueryTool()
+urlStart = "http://services.runescape.com/m=forum/searchthreads.ws?search=submit&srcstr="
+searchTermList = ["~Discontinued%20Item%20Status", "High%20Level%20Weapon%20Status",
+                    "Ability%20Codex%20Status%20Thread", "Treasure%20Trails%20Item%20Status",
+                    "SOF/TH%20Item%20Status", "~Third-Age%20Status",
+                    "High%20Level%20Gear%20Status", "Nex%20Status"]
+QueryTool(urlStart, searchTermList)
